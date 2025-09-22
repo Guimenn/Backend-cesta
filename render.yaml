@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: freelancer-backend
+    env: node
+    plan: free
+    buildCommand: |
+      npm install
+      npx prisma generate
+      npx tsc --noEmitOnError false --skipLibCheck
+    startCommand: |
+      if [ -f "dist/server.js" ]; then
+        node dist/server.js
+      else
+        npx tsx src/server.ts
+      fi
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3002
