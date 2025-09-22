@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "build:render": "npx tsc --noEmitOnError false --skipLibCheck",
+    "build:render": "./node_modules/.bin/tsc --noEmitOnError false --skipLibCheck",
     "start": "node dist/server.js",
     "start:render": "if [ -f 'dist/server.js' ]; then node dist/server.js; else node -r tsx/register src/server.ts; fi",
     "db:generate": "prisma generate",
